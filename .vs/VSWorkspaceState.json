@@ -3,8 +3,7 @@
     "",
     "\\lib",
     "\\pages",
-    "\\pages\\posts",
-    "\\public\\images"
+    "\\pages\\posts"
   ],
   "SelectedNode": "\\pages\\posts\\index.js",
   "PreviewInSolutionExplorer": false
