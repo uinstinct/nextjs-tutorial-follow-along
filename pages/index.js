@@ -1,5 +1,7 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
+import Date from '../components/date'
 import { getSortedPostsData } from '../lib/posts'
 import Layout, { siteTitle } from '../components/layouts'
 
@@ -18,8 +20,8 @@ export async function getStaticProps() { // getStaticProps() is only available i
 }
 
 export default function Home({ allPostsData }) {
-    // see you have passed a home prop to the layout component
     return (
+    // see you have passed a home prop to the layout component
         <Layout home>
             <Head>
                 <title>{siteTitle}</title>
@@ -35,11 +37,13 @@ export default function Home({ allPostsData }) {
                 <ul className={utilStyles.list}>
                     {allPostsData.map(({ id, date, title }) => (
                         <li className={utilStyles.listItem} key={id}>
-                            {title}
+                            <Link href="/posts/[id]" as={`/posts/${id}`}>
+                                <a>{title}</a>
+                            </Link>
                             <br />
-                            {id}
-                            <br />
-                            {date}
+                            <small className={utilStyles.lightText}>
+                                <Date dateString={date} />
+                            </small>
                         </li>
                     ))}
                 </ul>
